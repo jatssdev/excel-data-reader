@@ -66,7 +66,8 @@ const ExcelToJson = () => {
         let value = e.target.value
 
         let obj = jsonResult.find((x) => x.depth == value)
-        setQty(obj.qty)
+        setQty(obj ? obj.qty : '')
+
 
     }
 

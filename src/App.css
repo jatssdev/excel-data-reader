@@ -52,4 +52,24 @@
     padding: 25px;
 
   }
+
+  .main {
+    justify-content: center;
+    margin: 20px;
+
+  }
+
+  .main fieldset {
+    padding: 10px;
+  }
+
+  .main input {
+    width: 100px;
+    padding: 10px;
+
+  }
+
+  .main p {
+    font-size: 20px;
+  }
 }
