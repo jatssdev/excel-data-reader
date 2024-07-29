@@ -73,7 +73,7 @@ const ExcelToJson = () => {
                     {jsonResult.map((x, i) => {
                         return <li key={i}><p>Depth : {x.depth}</p> <p>Qty Ltr : {x.qty}</p></li>
                     })}
-                </ul> : search.length ? <ul  className='wrapper'>{search.map((x, i) => {
+                </ul> : search.length ? <ul className='wrapper'>{search.map((x, i) => {
                     return <li key={i}><p>Depth : {x.depth}</p> <p>Qty Ltr : {x.qty}</p></li>
                 })}</ul> : <p className='searchMsg'>No Search Result Found!</p>}
 
