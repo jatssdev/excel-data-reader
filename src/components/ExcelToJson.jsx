@@ -34,6 +34,7 @@ const transformData = (data) => {
 const ExcelToJson = () => {
     const [jsonResult, setJsonResult] = useState([]);
     const [search, setSearch] = useState(null);
+    const [qty, setQty] = useState('');
 
     const handleFileUpload = async (event) => {
         const file = event.target.files[0];
@@ -61,9 +62,39 @@ const ExcelToJson = () => {
 
     }
 
+    let getQtyDepth = (e) => {
+        let value = e.target.value
+
+        let obj = jsonResult.find((x) => x.depth == value)
+        setQty(obj.qty)
+
+    }
+
     return (
         <>
             <input type="file" accept=".xlsx, .xls" onChange={handleFileUpload} />
+
+
+
+            {/* visual 2 */}
+
+            <div className="main">
+
+                <fieldset>
+                    <legend>Depth</legend>
+                    <input onChange={getQtyDepth} type="text" />
+                </fieldset>
+                <p>=</p>
+                <fieldset>
+                    <legend>Quantity</legend>
+                    <input value={qty} type="text" />
+                </fieldset>
+
+            </div>
+
+
+
+            {/* visual 1 */}
             <div className="search">
                 <input onChange={SearchHandler} type="search" placeholder='Search Depth Or Quantity' />
             </div>
@@ -76,7 +107,6 @@ const ExcelToJson = () => {
                 </ul> : search.length ? <ul className='wrapper'>{search.map((x, i) => {
                     return <li key={i}><p>Depth : {x.depth}</p> <p>Qty Ltr : {x.qty}</p></li>
                 })}</ul> : <p className='searchMsg'>No Search Result Found!</p>}
-
         </>
     );
 };

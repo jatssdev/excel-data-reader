@@ -1,0 +1,19 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 50px;
+}
+
+.main fieldset {
+  padding: 10px;
+}
+
+.main input {
+  padding: 15px;
+  outline: none;
+}
+
+.main p {
+  font-size: 30px;
+}
