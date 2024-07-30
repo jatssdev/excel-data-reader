@@ -50,6 +50,7 @@ function App() {
   const [jsonResult, setJsonResult] = useState([]);
   const [search, setSearch] = useState(null);
   const [qty, setQty] = useState('');
+  const [depth, setdepth] = useState('');
 
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
@@ -81,9 +82,18 @@ function App() {
 
   let getQtyDepth = (e) => {
     let value = e.target.value
+    if (value) {
+      setdepth(e.target.value)
 
-    let obj = jsonResult.find((x) => x.depth == value)
-    setQty(obj ? obj.qty : '')
+      let obj = jsonResult.find((x) => x.depth == value)
+
+
+      setQty(obj ? obj.qty : 'invalid depth')
+    } else {
+      setQty('')
+      setdepth('')
+    }
+
   }
 
   useEffect(() => {
@@ -99,7 +109,7 @@ function App() {
       children: [
         {
           path: '',
-          element: <Home qty={qty} getQtyDepth={getQtyDepth} />
+          element: <Home depth={depth} qty={qty} getQtyDepth={getQtyDepth} />
         },
         {
           path: 'list',
