@@ -1,75 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
-
-.wrapper {
-  width: 50%;
-  padding: 50px;
-  margin: 0 auto;
-}
-
-.wrapper li {
-  justify-content: space-between;
-  display: flex;
-  box-shadow: 0 3px 10px rgb(237, 237, 237);
-  gap: 30px;
-  padding: 15px;
-  font-size: 20px;
-  margin: 0 10px;
-  font-weight: 600;
-}
-
-.search {
-  width: 50%;
-  margin: auto;
-}
-
-.search input {
-  border-radius: 10px;
-  border: 1px solid gray;
-  width: 100%;
-  padding: 15px;
-}
-
-.searchMsg {
-  text-align: center;
-  margin: 20px 0;
-  font-size: 20px;
-  color: rgb(255, 60, 60);
-
-}
-
-@media screen and (max-width:800px) {
-  .wrapper {
-    width: 100%;
-    padding: 25px;
-  }
-
-  .search {
-    width: 100%;
-    padding: 25px;
-
-  }
-
-  .main {
-    justify-content: center;
-    margin: 20px;
-
-  }
-
-  .main fieldset {
-    padding: 10px;
-  }
-
-  .main input {
-    width: 100px;
-    padding: 10px;
-
-  }
-
-  .main p {
-    font-size: 20px;
-  }
 }
