@@ -1,6 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Home = ({ getQtyDepth, depth, qty }) => {
+    let [spgr, setSpgr] = useState(null)
+    let [dqik, setDqik] = useState(null)
+
+    let spgrHandler = (e) => {
+        setSpgr(e.target.value)
+    }
+    let dqikHandler = (e) => {
+        setDqik(e.target.value)
+    }
     return (
         <div>
 
@@ -19,7 +28,32 @@ const Home = ({ getQtyDepth, depth, qty }) => {
                 </fieldset>
             </div>
             <button onClick={getQtyDepth} className='bg-black text-white my-2 mx-auto block px-3 py-1 rounded-sm'>Reset</button>
+            <section className='mx-12'>
 
+                <h2 className='text-2xl text-center my-4'> LOADING MATERIAL</h2>
+                <div className='grid gap-2  grid-cols-5'>
+                    <div>
+                        <label htmlFor="">SPGR NORMAL TEMPERATURE</label>
+                        <input value={spgr} onChange={spgrHandler} className='border w-full p-4 rounded' type="text" placeholder='SPGR NORMAL TEMPERATURE' />
+                    </div>
+                    <div>
+                        <label htmlFor="">DISPATCH QTY IN K.G. </label>
+                        <input value={dqik} onChange={dqikHandler} className='border w-full p-4 rounded' type="text" placeholder='DISPATCH QTY IN K.G.' />
+                    </div>
+                    <div>
+                        <label htmlFor="">DISPATCH QTY IN LTR.</label>
+                        <input value={(dqik && spgr) && (dqik / spgr)} className='border w-full p-4 rounded' type="text" placeholder='DISPATCH QTY IN LTR.' />
+                    </div>
+                    <div>
+                        <label htmlFor="">REMANING  DEPTH</label>
+                        <input value={(dqik && spgr) && (qty - (dqik / spgr))} className='border w-full p-4 rounded' type="text" placeholder='REMANING DEPTH' />
+                    </div>
+                    <div>
+                        <label htmlFor="">REMANING MATERIAL QTY IN LTR</label>
+                        <input value={(dqik && spgr) && (qty - (dqik / spgr))} className='border w-full p-4 rounded' type="text" placeholder='REMANING MATERIAL QTY IN LTR' />
+                    </div>
+                </div>
+            </section>
         </div>
     )
 }
