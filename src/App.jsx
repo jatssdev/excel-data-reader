@@ -1,8 +1,6 @@
 
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import ExcelToJson from './components/ExcelToJson'
+
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
 import List from './components/List'
@@ -11,10 +9,18 @@ import Upload from './components/Upload'
 import React, { useEffect, useState } from 'react';
 import * as XLSX from 'xlsx';
 
+import Scroll from './Scroll'
+import { Lines } from 'react-preloaders'
+
+
 function App() {
 
-
-
+  let [lines, setlines] = useState(true)
+  useEffect(() => {
+    setTimeout(() => {
+      setlines(false)
+    }, 1000)
+  }, [])
 
   const convertExcelToJson = (file) => {
     return new Promise((resolve, reject) => {
@@ -109,7 +115,7 @@ function App() {
       children: [
         {
           path: '',
-          element: <Home jsonResult={jsonResult} depth={depth} qty={qty} getQtyDepth={getQtyDepth} />
+          element: <Scroll jsonResult={jsonResult} depth={depth} qty={qty} getQtyDepth={getQtyDepth} />
         },
         {
           path: 'list',
@@ -119,13 +125,18 @@ function App() {
           path: 'upload',
           element: <Upload handleFileUpload={handleFileUpload} />
         },
+
       ]
     }
   ])
 
   return (
     <>
+
       <RouterProvider router={router} />
+      {
+        lines && <Lines />
+      }
     </>
   )
 

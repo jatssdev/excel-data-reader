@@ -17,7 +17,7 @@ export function Header() {
     return (
 
 
-        <nav class="bg-black">
+        <nav class="bg-black fixed top-0 left-0 z-50 w-full">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <NavLink to="/" className="text-white text-2xl">
                     Excel
