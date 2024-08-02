@@ -109,7 +109,7 @@ function App() {
       children: [
         {
           path: '',
-          element: <Home depth={depth} qty={qty} getQtyDepth={getQtyDepth} />
+          element: <Home jsonResult={jsonResult} depth={depth} qty={qty} getQtyDepth={getQtyDepth} />
         },
         {
           path: 'list',

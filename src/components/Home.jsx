@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Home = ({ getQtyDepth, depth, qty }) => {
+const Home = ({ getQtyDepth, jsonResult, depth, qty }) => {
     let [spgr, setSpgr] = useState(null)
     let [dqik, setDqik] = useState(null)
 
@@ -9,6 +9,22 @@ const Home = ({ getQtyDepth, depth, qty }) => {
     }
     let dqikHandler = (e) => {
         setDqik(e.target.value)
+    }
+    function findNearestValue(array, target) {
+        if (array.length === 0) {
+            throw new Error("Array is empty");
+        }
+
+        let nearestValue = 0;
+        let minDifference = Math.abs(array[0].qty - target);
+        for (let i = 1; i < array.length; i++) {
+            const currentDifference = Math.abs(array[i].qty - target);
+            if (currentDifference < minDifference) {
+                minDifference = currentDifference;
+                nearestValue = array[i].depth;
+            }
+        }
+        return nearestValue;
     }
     return (
         <div>
@@ -19,7 +35,6 @@ const Home = ({ getQtyDepth, depth, qty }) => {
                 <fieldset >
                     <legend className='py-2'>Depth</legend>
                     <input value={depth} className='border outline-none w-28 md:w-auto p-2 md:p-3  rounded-md text-center' onChange={getQtyDepth} type="text" />
-
                 </fieldset>
                 <p className='text-2xl py-2 mt-8'>=</p>
                 <fieldset >
@@ -29,7 +44,6 @@ const Home = ({ getQtyDepth, depth, qty }) => {
             </div>
             <button onClick={getQtyDepth} className='bg-black text-white my-2 mx-auto block px-3 py-1 rounded-sm'>Reset</button>
             <section className='mx-12'>
-
                 <h2 className='text-2xl text-center my-4'> LOADING MATERIAL</h2>
                 <div className='grid gap-2  grid-cols-5'>
                     <div>
@@ -42,15 +56,15 @@ const Home = ({ getQtyDepth, depth, qty }) => {
                     </div>
                     <div>
                         <label htmlFor="">DISPATCH QTY IN LTR.</label>
-                        <input value={(dqik && spgr) && (dqik / spgr)} className='border w-full p-4 rounded' type="text" placeholder='DISPATCH QTY IN LTR.' />
+                        <input value={Math.trunc((dqik && spgr) && (dqik / spgr))} className='border w-full p-4 rounded' type="text" placeholder='DISPATCH QTY IN LTR.' />
                     </div>
                     <div>
                         <label htmlFor="">REMANING  DEPTH</label>
-                        <input value={(dqik && spgr) && (qty - (dqik / spgr))} className='border w-full p-4 rounded' type="text" placeholder='REMANING DEPTH' />
+                        <input value={jsonResult.length && (dqik && spgr) && findNearestValue(jsonResult, Math.trunc((qty - (dqik / spgr))))} className='border w-full p-4 rounded' type="text" placeholder='REMANING DEPTH' />
                     </div>
                     <div>
                         <label htmlFor="">REMANING MATERIAL QTY IN LTR</label>
-                        <input value={(dqik && spgr) && (qty - (dqik / spgr))} className='border w-full p-4 rounded' type="text" placeholder='REMANING MATERIAL QTY IN LTR' />
+                        <input value={Math.trunc((dqik && spgr) && (qty - (dqik / spgr)))} className='border w-full p-4 rounded' type="text" placeholder='REMANING MATERIAL QTY IN LTR' />
                     </div>
                 </div>
             </section>
