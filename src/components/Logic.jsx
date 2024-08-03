@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import Home from './Home'
 
-const Logic = ({ getQtyDepth, jsonResult, depth, qty }) => {
-    let [spgr, setSpgr] = useState(null)
-    let [dqik, setDqik] = useState(null)
+const Logic = ({ getQtyDepth, jsonResult, spgr, dqik, setSpgr, setDqik, depth, qty }) => {
+
 
     let spgrHandler = (e) => {
         setSpgr(e.target.value)
@@ -27,18 +26,22 @@ const Logic = ({ getQtyDepth, jsonResult, depth, qty }) => {
         }
         return nearestValue;
     }
+    let resetInput = () => {
+        setSpgr(null)
+        setDqik(null)
+    }
     return (
         <div className='mt-24'>
             <Home getQtyDepth={getQtyDepth} depth={depth} qty={qty} />
             <section className='mx-12'>
                 <div className='grid gap-2  mb-16 mt-12   grid-cols-12'>
-                    <div className='col-span-6'>
+                    <div className='col-span-12 sm:col-span-6'>
                         <label htmlFor="spgr">SPGR NORMAL TEMPERATURE</label>
-                        <input value={spgr} id='spgr' onChange={spgrHandler} className='border my-2 w-full p-4 rounded' type="text" placeholder='SPGR NORMAL TEMPERATURE' />
+                        <input value={spgr} id='spgr' onChange={spgrHandler} className='border border-black outline-none my-2 w-full p-4 rounded' type="text" placeholder='SPGR NORMAL TEMPERATURE' />
                     </div>
-                    <div className='col-span-6'>
+                    <div className='col-span-12 sm:col-span-6'>
                         <label htmlFor="dqik">DISPATCH QTY IN K.G. </label>
-                        <input id='dqik' value={dqik} onChange={dqikHandler} className='border my-2 w-full p-4 rounded' type="text" placeholder='DISPATCH QTY IN K.G.' />
+                        <input id='dqik' value={dqik} onChange={dqikHandler} className='border border-black outline-none my-2 w-full p-4 rounded' type="text" placeholder='DISPATCH QTY IN K.G.' />
                     </div>
 
                 </div>
@@ -58,7 +61,7 @@ const Logic = ({ getQtyDepth, jsonResult, depth, qty }) => {
                             <td className='py-3 px-6 text-left border-b border-gray-200'>{qty}</td>
                         </tr>
                         <tr>
-                            <th className='py-3 px-6 text-left font-medium text-gray-600 border-b border-gray-200'>SPGR</th>
+                            <th className='py-3 px-6 text-left font-medium text-gray-600 border-b border-gray-200'>SPGR NORMAL TEMPERATURE</th>
                             <td className='py-3 px-6 text-left border-b border-gray-200'>{spgr}</td>
                         </tr>
                         <tr>

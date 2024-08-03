@@ -6,7 +6,7 @@ import { useState } from "react";
 import Home from "./components/Home";
 import Logic from "./components/Logic";
 
-export default function Scroll({ jsonResult, depth, qty, getQtyDepth }) {
+export default function Scroll({ jsonResult, spgr, dqik, setSpgr, setDqik, depth, qty, getQtyDepth }) {
     const slides = [1, 2];
 
     const [tl] = useState(() =>
@@ -41,7 +41,7 @@ export default function Scroll({ jsonResult, depth, qty, getQtyDepth }) {
                                 <Home jsonResult={jsonResult} depth={depth} qty={qty} getQtyDepth={getQtyDepth} />
                             </div>
                             <div className="section">
-                                <Logic jsonResult={jsonResult} depth={depth} qty={qty} getQtyDepth={getQtyDepth} />
+                                <Logic spgr={spgr} setSpgr={setSpgr} dqik={dqik} setDqik={setDqik} jsonResult={jsonResult} depth={depth} qty={qty} getQtyDepth={getQtyDepth} />
                             </div>
                         </ReactFullpage.Wrapper>
                     );

@@ -2,7 +2,7 @@ import React from 'react'
 
 const List = ({ search, jsonResult, SearchHandler }) => {
     return (
-        <div>
+        <div className='mt-32'>
             <div className="my-12">
                 <input className='border outline-none border-black block mx-auto w-3/5 p-3' onChange={SearchHandler} type="search" placeholder='Search Depth Or Quantity' />
             </div>

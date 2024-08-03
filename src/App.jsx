@@ -57,7 +57,8 @@ function App() {
   const [search, setSearch] = useState(null);
   const [qty, setQty] = useState('');
   const [depth, setdepth] = useState('');
-
+  let [spgr, setSpgr] = useState(null)
+  let [dqik, setDqik] = useState(null)
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -98,6 +99,8 @@ function App() {
     } else {
       setQty('')
       setdepth('')
+      setDqik('')
+      setSpgr('')
     }
 
   }
@@ -115,7 +118,7 @@ function App() {
       children: [
         {
           path: '',
-          element: <Scroll jsonResult={jsonResult} depth={depth} qty={qty} getQtyDepth={getQtyDepth} />
+          element: <Scroll spgr={spgr} setSpgr={setSpgr} dqik={dqik} setDqik={setDqik} jsonResult={jsonResult} depth={depth} qty={qty} getQtyDepth={getQtyDepth} />
         },
         {
           path: 'list',

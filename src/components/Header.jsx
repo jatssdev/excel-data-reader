@@ -20,19 +20,22 @@ export function Header() {
         <nav class="bg-black fixed top-0 left-0 z-50 w-full">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <NavLink to="/" className="text-white text-2xl">
-                    Excel
+                    <div className="h-16">
+                        <img className="h-full" src="./eroma.png" alt="" />
+                    </div>
+
                 </NavLink>
 
                 <div >
-                    <ul className="flex gap-3 p-4">
+                    <ul className="flex nabvar gap-3 p-4">
                         <li>
-                            <NavLink to={'/'} className="text-white" aria-current="page">Home</NavLink>
+                            <NavLink to={'/'} className="text-white text-lg" aria-current="page">Home</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/list" className="text-white">List</NavLink>
+                            <NavLink to="/list" className="text-white text-lg">List</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/upload" className="text-white">Upload</NavLink>
+                            <NavLink to="/upload" className="text-white text-lg">Upload</NavLink>
                         </li>
 
                     </ul>

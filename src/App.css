@@ -11,3 +11,7 @@
 .fp-watermark {
   display: none;
 }
+
+.nabvar .active {
+  color: tomato;
+}
