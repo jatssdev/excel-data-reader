@@ -9,19 +9,16 @@ import Upload from './components/Upload'
 import React, { useEffect, useState } from 'react';
 import * as XLSX from 'xlsx';
 
-import Scroll from './Scroll'
-import { Lines } from 'react-preloaders'
+
 
 
 function App() {
-
-  let [lines, setlines] = useState(true)
+  let [loading, setLoading] = useState(true)
   useEffect(() => {
     setTimeout(() => {
-      setlines(false)
-    }, 1000)
+      setLoading(false)
+    }, 1500)
   }, [])
-
   const convertExcelToJson = (file) => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -118,7 +115,7 @@ function App() {
       children: [
         {
           path: '',
-          element: <Scroll spgr={spgr} setSpgr={setSpgr} dqik={dqik} setDqik={setDqik} jsonResult={jsonResult} depth={depth} qty={qty} getQtyDepth={getQtyDepth} />
+          element: <Home spgr={spgr} setSpgr={setSpgr} dqik={dqik} setDqik={setDqik} jsonResult={jsonResult} depth={depth} qty={qty} getQtyDepth={getQtyDepth} />
         },
         {
           path: 'list',
@@ -135,11 +132,10 @@ function App() {
 
   return (
     <>
-
+      {loading && <div className="h-screen flex items-center justify-center fixed  top-0 left-0 w-full bg-white z-50">
+        <img src="preloader.gif" alt="" />
+      </div>}
       <RouterProvider router={router} />
-      {
-        lines && <Lines />
-      }
     </>
   )
 
