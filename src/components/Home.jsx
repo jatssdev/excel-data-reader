@@ -27,7 +27,7 @@ const Home = ({ jsonResult, spgr, dqik, setSpgr, setDqik, depth, qty, getQtyDept
 
     return (
         <div className='mt-28 p-4'>
-
+<h1>Hello magan</h1>
             <div className="flex px-3 py-12 items-center justify-evenly">
                 <fieldset >
                     <legend className='py-2'>Depth</legend>
